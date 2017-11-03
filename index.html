@@ -2,13 +2,127 @@
 <html>
 <head>
 <title>Page Title</title>
+    <meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1,maximum-scale=1">
+    <style>
+    body 
+    {
+    background-color: black;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    margin:0;
+       
+    }
+    .panel
+    {
+    display: inline-block;
+    width: 375px;
+    height: 100%;
+    text-align: center;
+    background-color: white;
+    color: black;
+    line-height: 667px;
+    font-size: 100px;
+    }
+    #slide
+    {
+        position: absolute;
+                display: flex;
+                top: 0px;
+                left: 0px;
+                width: 1875px;
+                height: 667px;
+                transition: left 300ms ease-out;
+                background-color: black;
+    }
+    #movetoLeft 
+     {
+        position:fixed;
+        cursor:pointer;
+        width: 50px;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        opacity:0,5;
+     }
+    #movetoRight 
+    {
+         position:fixed;
+        cursor:pointer;
+        width: 50px;
+        height: 100%;
+        right: 0px;
+        top: 0px;
+        opacity:0,5;
+    }
+    #btnGroup
+    {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+    }
+   .btn
+    {
+      display: inline-block;
+      width: 50px;
+      height: 30px;
+      border: 1px solid black;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+     }
+    </style>
+    <script>
+
+        var panelNumber = 1;
+
+        function movetoLeft() {
+            var slide = document.getElementById("slide");
+
+            panelNumber--;
+            if (panelNumber == 0) {
+                panelNumber = 1;
+            }
+
+            slide.style.left = "-" + ((panelNumber - 1) * 375) + "px";
+        }
+        function movetoRight() {
+            var slide = document.getElementById("slide");
+
+            panelNumber++;
+            if (panelNumber == 6) {
+                panelNumber = 5;
+            }
+
+            slide.style.left = "-" + ((panelNumber - 1) * 375) + "px";
+
+        }
+        function goToPanel(panel) {
+            panelNumber = panel;
+            slide.style.left = "-" + ((panelNumber - 1) * 375) + "px";
+        }
+    </script>
 </head>
 <body>
+<div id="slide">
+   <span class="panel">1</span>
+   <span class="panel">2</span>
+   <span class="panel">3</span>
+   <span class="panel">4</span>
+   <span class="panel">5</span>
+</div>
+<div id="movetoLeft"ontouchstart="movetoLeft();"></div>
+<div id="movetoRight"ontouchstart="movetoRight();"></div>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-    <p>wwwwwwwwwwwww
-        </p>
-
+<!--
+<div id="btnGroup">
+	<div class="btn" ontouchstart="goToPanel(1);">1</div>
+	<div class="btn" ontouchstart="goToPanel(2);">2</div>
+	<div class="btn" ontouchstart="goToPanel(3);">3</div>
+	<div class="btn" ontouchstart="goToPanel(4);">4</div>
+	<div class="btn" ontouchstart="goToPanel(5);">5</div>
+</div>	
+-->
 </body>
 </html>

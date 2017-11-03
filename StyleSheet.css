@@ -1,0 +1,14 @@
+﻿body {
+    back
+}
+.panel
+{
+    display: inline-block;
+    width: 375px;
+    height: 100%;
+    text-align: center;
+    background-color: white;
+    color: black;
+    line-height: 667px;
+    font-size: 100px;
+}
